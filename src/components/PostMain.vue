@@ -44,11 +44,11 @@ export default{
                 </div>
                 <div v-else class="col-12 d-flex justify-content-center flex-wrap">
                     <div class="row">
-                        <div class="col-3" v-for="post in posts" :key="post.id">
+                        <div class="col-12 col-md-4" v-for="post in posts" :key="post.id">
                             <div class="card my-3">
                                 <div class="card-body">
                                     <div class="card-img-top">
-                                        <img class="img-fluid" :src="post.cover_image !=null ? `${baseUrl}/${post.cover_image}` : 'https://picsum.photos/200/300' " alt="">
+                                        <img class="img-fluid" :src="post.cover_image !=null ? `${baseUrl}/storage/${post.cover_image}` : 'https://picsum.photos/300/200' " alt="">
                                     </div>
                                     <div class="card-title">
                                         <h5>{{ post.title }}</h5>
