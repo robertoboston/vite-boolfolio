@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 export default{
-    name: "PostMain",
+    name: "PostList",
     data(){
         return{
             posts:[],
