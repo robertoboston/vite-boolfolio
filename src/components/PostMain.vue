@@ -63,7 +63,7 @@ export default{
                                     <div class="card-title py-1">
                                         <h3>{{ post.title }}</h3>
                                         <p>
-                                        <em>Categoria : {{ post.category }}</em>
+                                        <!-- <em>Categoria : {{ post.category.name }}</em> -->
                                         </p>
                                     </div>
                                     <div>
