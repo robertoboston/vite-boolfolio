@@ -1,7 +1,22 @@
 <script>
+import {store} from '../store';
+import axios from 'axios';
+
 export default {
-    name: 'SinglePost'
-    
+    name: 'SinglePost',
+    data(){
+        return{
+            store,
+            post: null,
+
+        }
+    },
+    mounted(){
+        this.store.loading = true;
+        axios.get(`${this.store.baseUrl}/api/posts/${this.$route.params.slug}`).then((response) => {
+            console.log(response)
+        })
+    }
 }
 </script>
 
@@ -14,3 +29,4 @@ export default {
 <style lang="">
     
 </style>
+

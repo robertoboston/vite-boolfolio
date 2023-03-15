@@ -1,22 +1,22 @@
 <script>
 import axios from 'axios';
+import {store} from '../store';
 
 
 export default{
     name: "PostList",
     data(){
         return{
+            store,
             posts:[],
-            loading: true,
-            baseUrl: 'http://127.0.0.1:8000',
             currentPage:1,
             lastPage:null
         }
     },
     methods:{
         getPosts(post_page){
-            this.loading = true
-            axios.get(`${this.baseUrl}/api/posts`,{params:{page: post_page}}).then((response)=>{
+            this.store.loading = true
+            axios.get(`${this.store.baseUrl}/api/posts`,{params:{page: post_page}}).then((response)=>{
                 if(response.data.success){
                     console.log(response.data)
 
@@ -27,7 +27,7 @@ export default{
                     this.posts = response.data.posts.data;
                     this.currentPage = response.data.posts.current_page
                     this.lastPage = response.data.posts.last_page
-                    this.loading = false;
+                    this.store.loading = false;
                 }
                 else{
                     //compare messaggio di errore
