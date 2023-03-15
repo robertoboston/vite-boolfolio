@@ -3,6 +3,7 @@ import {createRouter, createWebHistory } from 'vue-router';
 import HomePage from './pages/Homepage.vue';
 import PostList from './pages/PostList.vue'
 
+
 const router = createRouter({
     history : createWebHistory(),
     routes: [
@@ -15,7 +16,11 @@ const router = createRouter({
             path: '/blog',
             name: 'post_list',
             component: PostList,
-
+        },
+        {
+            path:'/blog/:slug',
+            name: 'single-post',
+            component: SinglePost
         }
     ]
 })
