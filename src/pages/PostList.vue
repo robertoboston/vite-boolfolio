@@ -49,7 +49,7 @@ export default{
                 <div class="col-12">
                     <h2 class="text-center">Boolpress</h2>
                 </div>
-                <div v-if="loading" class="col-12 d-flex justify-content-center">
+                <div v-if="store.loading" class="col-12 d-flex justify-content-center">
                     <div class="loader"></div>
                 </div>
                 <div v-else class="col-12 d-flex justify-content-center flex-wrap">
@@ -58,12 +58,15 @@ export default{
                             <div class="card my-3">
                                 <div class="card-body">
                                     <div class="card-img-top">
-                                        <img class="img-fluid" :src="post.cover_image !=null ? `${baseUrl}/storage/${post.cover_image}` : 'https://picsum.photos/300/200' " alt="">
+                                        <img class="img-card" :src="post.cover_image !=null ? `${store.baseUrl}/storage/${post.cover_image}` : 'https://picsum.photos/300/200' " alt="">
                                     </div>
                                     <div class="card-title py-1">
                                         <h3>{{ post.title }}</h3>
-                                        <p>
-                                        <!-- <em>Categoria : {{ post.category.name }}</em> -->
+                                        <p v-if="(post.category != null)">
+                                        <em>Categoria : {{ post.category.name }}</em>
+                                        </p>
+                                        <p v-else>
+                                            Categoria : Senza categoria
                                         </p>
                                     </div>
                                     <div>
@@ -72,9 +75,14 @@ export default{
                                     <div class="card-text py-1">
                                         <!-- EXCEPTS -->
                                     </div>
-                                    <a href="#" class="btn btn-sm btn-success">
+                                    <div>
+                                         <!-- <a href="#" class="btn btn-sm btn-success">
                                         Leggi L'articolo
-                                    </a>
+                                    </a> -->
+                                    <router-link :to="{name: 'single-post', params: {slug: post.slug } }" class="btn btn-sm btn-success">
+                                        Leggi l'Articolo
+                                    </router-link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -101,6 +109,11 @@ export default{
 
 <style lang="scss" scoped>
 
+
+.img-card{
+    width: 380px;
+    height: 300px;
+}
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
     border-top: 16px solid #3498db; /* Blue */
