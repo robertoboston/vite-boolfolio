@@ -29,9 +29,10 @@ export default {
             <div class="loader"></div>
         </div>
         <div v-else class="col-12">
-            <!-- <h2>{{post.title}}</h2> --> Dettaglio post
+            <h3>Dettaglio Post:</h3>
+            <!-- <h2>{{post.title}}</h2> -->
         </div>
-        <div>
+        <div class="cover-img">
             <!-- <img :src="`${this.store.baseUrl}/storage/${this.post.cover_image}`" class="img-fluid" alt=""> -->
         </div>
     </div>
@@ -52,6 +53,10 @@ export default {
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+
+  .cover-img{
+    width: 500px;
   }
 
     
