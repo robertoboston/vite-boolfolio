@@ -11,7 +11,8 @@ export default{
             store,
             posts:[],
             currentPage:1,
-            lastPage:null
+            lastPage:null,
+            loading: true
         }
     },
     components:{
@@ -20,7 +21,7 @@ export default{
     },
     methods:{
         getPosts(post_page){
-            this.store.loading = true
+            this.loading = true
             axios.get(`${this.store.baseUrl}/api/posts`,{params:{page: post_page}}).then((response)=>{
                 if(response.data.success){
                     console.log(response.data)
@@ -32,7 +33,7 @@ export default{
                     this.posts = response.data.posts.data;
                     this.currentPage = response.data.posts.current_page
                     this.lastPage = response.data.posts.last_page
-                    this.store.loading = false;
+                    this.loading = false;
                 }
                 else{
                     //compare messaggio di errore
@@ -54,7 +55,7 @@ export default{
                 <div class="col-12">
                     <h2 class="text-center">Boolpress</h2>
                 </div>
-                <div v-if="store.loading" class="col-12 d-flex justify-content-center">
+                <div v-if="loading" class="col-12 d-flex justify-content-center">
                     <div class="loader"></div>
                 </div>
                 <div v-else class="col-12 d-flex justify-content-center flex-wrap">

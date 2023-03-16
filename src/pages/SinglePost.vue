@@ -1,6 +1,5 @@
 <script>
 import axios from 'axios';
-
 import {store} from '../store.js';
 
 export default {
@@ -9,15 +8,17 @@ export default {
         return{
             store,
             post: null,
+            loading: true
 
         }
     },
     mounted(){
-        this.store.loading = true;
+        this.loading = true;
         axios.get(`${this.store.baseUrl}/api/posts/${this.$route.params.slug}`).then((response) => {
-            console.log(response.data)
             this.post = response.data.post
-            this.store.loading = false
+            console.log(this.post.title)
+            console.log(this.post.cover_image)
+            this.loading = false
         })
     }
 }
@@ -31,10 +32,10 @@ export default {
         </div>
         <div v-else class="col-12">
             <h3>Dettaglio Post:</h3>
-            <h2>{{post.title}}</h2>
+            <!-- <h2>{{post.title}}</h2> -->
         </div>
         <div class="cover-img">
-            <img :src="`${this.store.baseUrl}/storage/${this.post.cover_image}`" class="img-fluid" alt="#">
+            <!-- <img :src="`${this.store.baseUrl}/storage/${post.cover_image}`" class="img-fluid" alt="#"> -->
         </div>
     </div>
 </div>
