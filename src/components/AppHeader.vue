@@ -5,13 +5,17 @@ export default {
         return{
             menuItems: [
                 {
-                    label: 'homepage',
+                    label: 'Homepage',
                     routeName: 'homepage',
                     // link: '/'
                 },
                 {
                     label: 'Blog',
                     routeName:'post_list'
+                },
+                {
+                    label: 'Contacts',
+                    routeName : 'contacts'
                 }
             ]
 

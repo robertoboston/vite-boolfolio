@@ -16,8 +16,6 @@ export default {
         this.loading = true;
         axios.get(`${this.store.baseUrl}/api/posts/${this.$route.params.slug}`).then((response) => {
             this.post = response.data.post
-            console.log(this.post.title)
-            console.log(this.post.cover_image)
             this.loading = false
         })
     }
@@ -32,13 +30,23 @@ export default {
         </div>
         <div v-else class="col-12">
             <div>
-                <h3>Dettaglio Post:</h3>
-                <h2>{{post.title}}</h2>
+                <div>
+                    <h3>Dettaglio Post:</h3>
+                    <h2>{{post.title}}</h2>
+                </div>
             </div>
             <div class="img-card">
                 <img :src="`${this.store.baseUrl}/storage/${post.cover_image}`" class="img-fluid" alt="#">
                 <div class="content mt-4">
                 {{post.content}}
+                </div>
+                <div class="mt-5">
+                   <strong>Categoria:</strong> {{post.category.name}}
+                </div>
+                <div>
+                    <router-link :to="{name: 'post_list'}" class="btn btn-success mt-3 mt-5" >
+                        Torna alla pagina dei posts
+                    </router-link>
                 </div>
             </div>
         </div>

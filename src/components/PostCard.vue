@@ -29,9 +29,6 @@ export default {
                         Categoria : Senza categoria
                     </p>
                 </div>
-                <div>
-                    <p>{{ post.content }}</p>
-                </div>
                 <div class="card-text py-1">
                     <!-- EXCEPTS -->
                 </div>
