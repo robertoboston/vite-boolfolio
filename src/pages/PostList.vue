@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import {store} from '../store';
+import PostCard from '../components/PostCard.vue';
 
 
 export default{
@@ -12,6 +13,10 @@ export default{
             currentPage:1,
             lastPage:null
         }
+    },
+    components:{
+        PostCard
+
     },
     methods:{
         getPosts(post_page){
@@ -55,36 +60,7 @@ export default{
                 <div v-else class="col-12 d-flex justify-content-center flex-wrap">
                     <div class="row">
                         <div class="col-12 col-md-4" v-for="post in posts" :key="post.id">
-                            <div class="card my-3">
-                                <div class="card-body">
-                                    <div class="card-img-top">
-                                        <img class="img-card" :src="post.cover_image !=null ? `${store.baseUrl}/storage/${post.cover_image}` : 'https://picsum.photos/300/200' " alt="">
-                                    </div>
-                                    <div class="card-title py-1">
-                                        <h3>{{ post.title }}</h3>
-                                        <p v-if="(post.category != null)">
-                                        <em>Categoria : {{ post.category.name }}</em>
-                                        </p>
-                                        <p v-else>
-                                            Categoria : Senza categoria
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p>{{ post.content }}</p>
-                                    </div>
-                                    <div class="card-text py-1">
-                                        <!-- EXCEPTS -->
-                                    </div>
-                                    <div>
-                                         <!-- <a href="#" class="btn btn-sm btn-success">
-                                        Leggi L'articolo
-                                    </a> -->
-                                    <router-link :to="{name: 'single-post', params: {slug: post.slug } }" class="btn btn-sm btn-success">
-                                        Leggi l'Articolo
-                                    </router-link>
-                                    </div>
-                                </div>
-                            </div>
+                           <PostCard :post="post"></PostCard>
                         </div>
                     </div>
                     <div class="row">
@@ -109,11 +85,6 @@ export default{
 
 <style lang="scss" scoped>
 
-
-.img-card{
-    width: 380px;
-    height: 300px;
-}
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
     border-top: 16px solid #3498db; /* Blue */

@@ -1,6 +1,7 @@
 <script>
-import {store} from '../store';
 import axios from 'axios';
+
+import {store} from '../store.js';
 
 export default {
     name: 'SinglePost',
@@ -30,10 +31,10 @@ export default {
         </div>
         <div v-else class="col-12">
             <h3>Dettaglio Post:</h3>
-            <!-- <h2>{{post.title}}</h2> -->
+            <h2>{{post.title}}</h2>
         </div>
         <div class="cover-img">
-            <!-- <img :src="`${this.store.baseUrl}/storage/${this.post.cover_image}`" class="img-fluid" alt=""> -->
+            <img :src="`${this.store.baseUrl}/storage/${this.post.cover_image}`" class="img-fluid" alt="#">
         </div>
     </div>
 </div>
@@ -53,10 +54,6 @@ export default {
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
-
-  .cover-img{
-    width: 500px;
   }
 
     
